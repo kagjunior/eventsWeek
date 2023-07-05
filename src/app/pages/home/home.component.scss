@@ -1,0 +1,53 @@
+.container {
+  width: 80%;
+  margin: 40px auto;
+  .card {
+    display: flex;
+    justify-content: space-around;
+    .slogan {
+      display: flex;
+      justify-content: center;
+      padding-left: 10px;
+      align-items: center;
+      background: linear-gradient(to left, white 75%, lightgrey 50%);
+      .titre {
+          font-weight: 900;
+          font-size: 2rem;
+      }
+    }
+    .image {
+      width: 50%;
+      img {
+        width: 100%;
+      }
+    }
+  }
+  .filter {
+    margin-top: 25px;
+    display: flex;
+    gap: 10px;
+    .titre {
+      font-size: 3em;
+      font-weight: 900;
+    }
+    .input {
+      input {
+        border: none;
+        border-bottom: 3px solid green;
+        font-size: 3em;
+        color: green;
+      }
+      input:focus {
+        outline: thin dotted;
+      }
+    }
+  }
+  .listevent {
+    margin-top: 35px;
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    gap: 25px;
+  }
+}

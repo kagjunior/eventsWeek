@@ -1,0 +1,48 @@
+<div class="container">
+  <h2>Création d'événement</h2>
+  <form>
+    <div class="first">
+      <label for="event-name">Nom de l'événement</label>
+      <input type="text" id="event-name" name="event-name" [(ngModel)]="events.titre">
+
+      <label for="event-datedebut">Date de début</label>
+      <input type="date" id="event-datedebut" name="event-datedebut" [(ngModel)]="events.dateStart">
+
+      <label for="event-timedebut">Heure de début</label>
+      <input type="time" id="event-timedebut" name="event-timedebut" [(ngModel)]="events.hourStart">
+
+      <label for="event-datefin">Date de fin</label>
+      <input type="date" id="event-datefin" name="event-datefin" [(ngModel)]="events.dateEnd">
+
+      <label for="event-timefin">Heure de fin</label>
+      <input type="time" id="event-timefin" name="event-timefin" [(ngModel)]="events.hourEnd">
+      <label for="event-adresse">Numéro et rue</label>
+      <input type="text" id="event-adresse" name="event-adresse" [(ngModel)]="events.lieu">
+    </div>
+    <div class="second">
+      <label for="event-adresse">Code postal</label>
+      <input type="number" id="event-code" name="event-code" [(ngModel)]="events.codePostal">
+      <label for="event-ville">Ville</label>
+      <input type="text" id="event-ville" name="event-ville" [(ngModel)]="events.ville">
+      <label for="event-image">Ajoutez un flyer (optionnel)</label>
+      <input type="file" id="event-image" name="event-image" [(ngModel)]="events.image">
+      <label for="event-price">Prix du billet d'entrée (mettre 0 si c'est gratuit)</label>
+      <input type="number" id="event-price" name="event-price" [(ngModel)]="events.prix">
+      <label for="event-place">Nombre de places attendu</label>
+      <input type="number" id="event-place" name="event-place" [(ngModel)]="events.place">
+    </div>
+  </form>
+  <div class="descrip" style="text-align: center;font-weight: bolder;font-size: 1.5em;margin-top: 2em">
+    Décrivez votre évènement
+  </div>
+  <p style="text-align: center">Plus vous êtes précis plus vous êtes convaincants et plus vous vendez des billets!</p><br>
+  <ckeditor
+    [(ngModel)]="ckeditorContent">
+  </ckeditor>
+  <div class="button" style="width: 100%;margin-top: 15px; text-align: center;padding: 2em">
+    <button (click)="createEvent()" style="background: black;color: white; width: 50%;padding: 10px 1em;font-size: 1.5em;border: none;border-radius: 15px;font-weight: bolder">Créer l'événement</button>
+  </div>
+</div>
+<app-spinner *ngIf="loading"></app-spinner>
+
+
