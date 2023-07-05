@@ -1,1 +1,40 @@
 /* You can add global styles to this file, and also import other style files */
+@font-face {
+  font-family: 'popins';
+  src: url("assets/Poppins-Regular.ttf");
+}
+
+body {
+  font-family: 'popins';
+}
+button {
+  cursor: pointer;
+}
+app-spinner {
+  position: absolute;
+  top: 50%;
+  left: 0;
+  width: 100%;
+}
+/*.modal {
+  background: red;
+  color: white;
+  text-align: center;
+  display: flex;
+  position: absolute;
+  top: 50%;
+  left: 20%;
+  padding: 1em;
+  border-radius: 25px;
+  .modal-footer {
+    button {
+      padding: 3px 2em;
+      background: black;
+      color: white;
+      font-weight: bolder;
+      border: none;
+      border-radius: 6px;
+      margin-top: 10px;
+    }
+  }
+}*/

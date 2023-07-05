@@ -1,0 +1,44 @@
+.sidenav {
+  height: 100%;
+  width: 200px;
+  position: fixed;
+  z-index: 1;
+  top: 65px;
+  left: 0;
+  background-color: #333;
+  padding-top: 20px;
+  text-align: center;
+}
+
+/* Styles pour les liens dans la barre latérale */
+.sidenav a, .sidenav h3 {
+  padding: 10px;
+  text-decoration: none;
+  font-size: 18px;
+  color: #fff;
+  display: block;
+  margin: 1em;
+}
+
+/* Style pour les liens actifs dans la barre latérale */
+.sidenav h3.active {
+  background-color: #4CAF50;
+  color: white;
+}
+
+/* Styles pour la partie principale du tableau de bord */
+.main {
+  margin-left: 200px;
+  padding: 20px;
+}
+
+/* Styles pour les titres dans la partie principale */
+.main h1 {
+  font-size: 24px;
+}
+
+/* Styles pour le texte dans la partie principale */
+.main p {
+  font-size: 16px;
+  line-height: 1.5;
+}

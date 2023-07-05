@@ -1,0 +1,55 @@
+/* Styles pour la card */
+.card {
+  width: 300px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  overflow: hidden;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+.card:hover {
+  box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+}
+
+/* Style de l'image */
+.card img {
+  width: 100%;
+  height: auto;
+}
+
+/* Style du contenu de la card */
+.card-content {
+  padding: 10px;
+}
+
+/* Style du titre */
+.card-content .h1 {
+  margin-top: 0;
+  font-weight: 700;
+
+  a {
+    text-decoration: none;
+    font-size: 1.5em;
+    color: black;
+  }
+  a:hover  {
+      text-decoration: underline;
+    }
+}
+
+/* Style du bouton */
+.card-content .btn {
+  display: inline-block;
+  background-color: #4CAF50;
+  color: white;
+  padding: 8px 16px;
+  text-decoration: none;
+  border-radius: 4px;
+}
+
+/* Style du prix */
+.card-content .price {
+  font-weight: bold;
+  margin-bottom: 0;
+  font-size: 1.2em;
+  text-align: center;
+}

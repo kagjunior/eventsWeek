@@ -1,0 +1,22 @@
+<section class="event-details">
+  <div class="event-image">
+    <img src="./assets/roller-coaster-g8eca68687_1280.jpg" alt="">
+  </div>
+  <div class="event-info">
+    <h1 class="event-title">{{eventTab?.titre}}</h1>
+    <p class="event-date" style="color: blue;">Prévu le {{date}}, de {{eventTab?.hourStart}} à {{eventTab?.hourEnd}}</p>
+    <p class="event-location">Au {{eventTab?.lieu}}, {{eventTab?.codePostal}} {{eventTab?.ville}}</p>
+    <h1 class="event-description" style="color: brown;font-size: 1.5em">Description de l'événement</h1>
+    <div class="description">
+      <div [innerHTML]="descriptionHtml"></div>
+    </div>
+  </div>
+  <div class="paiement">
+    <button (click)="buyTicket()" *ngIf="!reserved">Réserver</button>
+    <h1 style="color: green; font-style: italic" *ngIf="reserved && restant > 0">Déjà réservé</h1>
+    <h1 style="background: orangered;color: white" *ngIf="restant === 0">Complet</h1>
+  </div>
+</section>
+<app-spinner *ngIf="loading"></app-spinner>
+
+

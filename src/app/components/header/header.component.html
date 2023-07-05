@@ -1,0 +1,20 @@
+<div class="header">
+  <div class="logo">
+    <div (click)="home()" style="cursor: pointer">
+      DiasporaEvent
+    </div>
+  </div>
+  <div class="buttons">
+    <div class="login" *ngIf="!logged"><a href="/login">Connexion</a></div>
+    <div class="signup" *ngIf="!logged"><a href="/sign-up">Ouvrir un compte</a></div>
+    <div class="dropdown" *ngIf="logged">
+      <button class="dropbtn">{{user.email}}</button>
+      <div class="dropdown-content">
+        <a href="/dashboard">Tableau de bord</a>
+        <a href="#">Paramètres</a>
+        <a (click)="logout()">Se déconnecter</a>
+      </div>
+    </div>
+  </div>
+</div>
+<app-spinner *ngIf="loading"></app-spinner>
