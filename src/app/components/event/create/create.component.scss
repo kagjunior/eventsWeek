@@ -44,3 +44,19 @@ form button {
 form button:hover {
   background-color: #45a049;
 }
+@media (max-width: 640px) {
+  .container {
+    width: 100%;
+    margin: 0 auto;
+    form {
+      display: block;
+      .first, .second {
+        display: block;
+        width: 90%;
+        input {
+          padding: 10px 0;
+        }
+      }
+    }
+  }
+}

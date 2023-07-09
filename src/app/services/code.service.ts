@@ -6,7 +6,7 @@ import {Observable} from "rxjs";
   providedIn: 'root'
 })
 export class CodeService {
-  url = 'http://localhost:8889/api';
+  url = 'http://localhost:8890/api';
   constructor(private http: HttpClient) { }
 
   public getCodeVerify(body: any): Observable<any> {

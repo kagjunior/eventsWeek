@@ -6,7 +6,7 @@ import {Observable} from "rxjs";
   providedIn: 'root'
 })
 export class UserService {
-  url = 'http://localhost:8889/api';
+  url = 'http://localhost:8890/api';
   constructor(private http: HttpClient) { }
 
   public getUserById(id): Observable<any> {
@@ -17,5 +17,8 @@ export class UserService {
   }
   public CancelEvent(id): Observable<any> {
     return this.http.get(this.url+'/cancel-event/'+id);
+  }
+  public getCurrentCity(): Observable<any> {
+    return this.http.get('https://ipapi.co/json');
   }
 }

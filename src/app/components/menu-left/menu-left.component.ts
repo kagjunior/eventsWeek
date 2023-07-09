@@ -15,6 +15,7 @@ export class MenuLeftComponent implements OnInit {
   isHome: boolean = false;
   isReservation: boolean = false;
   isEvent: boolean = false;
+  currentId: any
   constructor() { }
 
   ngOnInit(): void {
@@ -22,6 +23,7 @@ export class MenuLeftComponent implements OnInit {
     this.isHome = true;
     this.isReservation = false;
     this.choose(1);
+    this.currentId = 1;
   }
 
   public choose(id:number) {
@@ -37,6 +39,9 @@ export class MenuLeftComponent implements OnInit {
       this.isHome = false;
       this.isEvent = false;
     }
+  }
+  public chose(id) {
+    this.currentId = id;
   }
 
 }

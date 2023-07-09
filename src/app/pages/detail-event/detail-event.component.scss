@@ -30,4 +30,37 @@ section {
     }
   }
 }
+@media (max-width: 640px) {
+  section {
+    width: 100%;
+    .event-image {
+      img {
+        width: 100%;
+        height: 200px;
+      }
+    }
+    .paiement {
+      float: right;
+      margin: -150px 40px 0 0;
+      position: fixed;
+      right: 15%;
+      bottom: 15px;
+      width: 200px;
+      background: lightgray;
+      border-radius: 15px;
+      text-align: center;
+      button {
+        padding: 9px 1em;
+        color: white;
+        background: black;
+        font-weight: 700;
+        font-size: 1.2em;
+        width: 100%;
+        border: none;
+        border-radius: 15px;
+        cursor: pointer;
+      }
+    }
+  }
+}
 
