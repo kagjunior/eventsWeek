@@ -16,7 +16,7 @@ export class HomeComponent implements OnInit {
 
   ngOnInit(): void {
     this.getEvents();
-    this.getCityFromGeolocation();
+    //this.getCityFromGeolocation();
   }
   getCityFromGeolocation(): void {
     if (navigator.geolocation) {

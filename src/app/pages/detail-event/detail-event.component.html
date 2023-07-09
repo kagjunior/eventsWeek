@@ -4,7 +4,7 @@
   </div>
   <div class="event-info">
     <h1 class="event-title">{{eventTab?.titre}}</h1>
-    <p class="event-date" style="color: blue;">Prévu le {{date}}, de {{eventTab?.hourStart}} à {{eventTab?.hourEnd}}</p>
+    <p class="event-date" style="color: blue;">Prévu le {{date}}, de {{eventTab?.hourStart.slice(0,2)+'h'}} à {{eventTab?.hourEnd.slice(0,2)+'h'}}</p>
     <p class="event-location">Au {{eventTab?.lieu}}, {{eventTab?.codePostal}} {{eventTab?.ville}}</p>
     <h1 class="event-description" style="color: brown;font-size: 1.5em">Description de l'événement</h1>
     <div class="description">
@@ -18,5 +18,7 @@
   </div>
 </section>
 <app-spinner *ngIf="loading"></app-spinner>
+<app-footer></app-footer>
+
 
 

@@ -37,4 +37,7 @@ export class EventService {
   public getListeReservation(eventId): Observable<any> {
     return this.http.get(this.url+'/event/reservations/' + eventId);
   }
+  public getRefund(orderId): Observable<any> {
+    return this.http.post(this.url+'/refund', orderId);
+  }
 }

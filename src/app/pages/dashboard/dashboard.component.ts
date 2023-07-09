@@ -11,6 +11,7 @@ import {EventService} from "../../services/event.service";
 export class DashboardComponent implements OnInit {
   eventsInfo! :any
   eventArrayUser: any[] = []
+  archived: boolean = false;
   constructor(private tokenService: TokenService,
               private eventService: EventService) { }
 
@@ -22,7 +23,15 @@ export class DashboardComponent implements OnInit {
   public getReservation(id) {
     this.eventService.getReservationByUserId(id).subscribe(res => {
       this.eventsInfo = res;
-     // console.log(this.eventsInfo);
+      this.eventsInfo.forEach(ev => {
+        let day1 = new Date(ev.dateEnd);
+        let day2 = new Date();
+        if(day1 >= day2) {
+          this.archived = false;
+        } else {
+          this.archived = true;
+        }
+      })
     })
   }
   public getEventByUser(id) {
@@ -35,7 +44,15 @@ export class DashboardComponent implements OnInit {
 
         });
         this.eventArrayUser.push(event);
-        console.log(this.eventArrayUser);
+        event.forEach(ev => {
+          let day1 = new Date(ev.dateEnd);
+          let day2 = new Date();
+          if(day1 >= day2) {
+            this.archived = false;
+          } else {
+            this.archived = true;
+          }
+        })
       })
     })
   }

@@ -23,20 +23,19 @@ export class CreateComponent implements OnInit {
     this.events.userId = this.getUserId(this.tokenService.getToken());
   }
   public createEvent() {
-    this.events.description = this.ckeditorContent;
-    this.events.statut = 0;
-    this.loading = true;
-    setTimeout(() => {
-      this.eventService.addEvent(this.events).subscribe(res => {
-          if(res['notallowed']) {
+      this.events.description = this.ckeditorContent;
+      this.events.statut = 0;
+      this.loading = true;
+      setTimeout(() => {
+        this.eventService.addEvent(this.events).subscribe(res => {
+          if (res['msg']==='notallowed') {
             alert("Vous avez déjà créé un évènement qui est en cours. Nous vous prions de le préparer au maximum pour sa réussite avant de créer un autre.")
             this.loading = false;
           }
           this.router.navigate(['/dashboard']);
           this.loading = false;
-      })
-    }, 2000)
-
+        })
+      }, 2000)
   }
 
   public getUserId(token) {

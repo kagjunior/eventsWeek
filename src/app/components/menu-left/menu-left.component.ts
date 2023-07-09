@@ -10,6 +10,8 @@ export class MenuLeftComponent implements OnInit {
   eventInfo!: any
   @Input()
   eventArrayUser!: any
+  @Input()
+  archived!: boolean
   isHome: boolean = false;
   isReservation: boolean = false;
   isEvent: boolean = false;

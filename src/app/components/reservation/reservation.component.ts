@@ -4,6 +4,7 @@ import * as pdfMake from 'pdfmake/build/pdfmake';
 import * as pdfFonts from 'pdfmake/build/vfs_fonts';
 import jwt_decode from "jwt-decode";
 import {UserService} from "../../services/user.service";
+import {EventService} from "../../services/event.service";
 
 pdfMake.vfs = pdfFonts.pdfMake.vfs;
 
@@ -19,15 +20,13 @@ export class ReservationComponent implements OnInit {
   lieu!: any
   id!: any
   loading: boolean = false;
+  @Input()
+  archived!: boolean;
   constructor(private datePipes: DatePipe,
-              private userService: UserService) { }
+              private userService: UserService,
+              private eventService: EventService) { }
 
   ngOnInit(): void {
-    this.eventInfo.forEach(event => {
-      this.date = this.datePipes.transform(event.dateStart, 'EEEE d MMMM yyyy', 'fr-FR');
-      this.lieu = event.lieu;
-      this.id = event.eventId
-    })
   }
   showModal: boolean = false;
 
@@ -43,7 +42,17 @@ export class ReservationComponent implements OnInit {
     // @ts-ignore
     return jwt_decode(token).id;
   }
-  public download() {
+  public download(id: any) {
+    let date: any = '';
+    let lieu: any = '';
+    let idEvent: any = '';
+    this.eventInfo.forEach(ev => {
+      if(ev.eventId === id) {
+        date = this.datePipes.transform(ev.dateStart, 'EEEE d MMMM yyyy', 'fr-FR');
+        lieu = ev.lieu;
+        idEvent = ev.eventId;
+      }
+    })
     const docDefinition = {
       content: [
         {
@@ -56,11 +65,11 @@ export class ReservationComponent implements OnInit {
           style: 'subheader'
         },
         {
-          text: 'Date: '+this.date,
+          text: 'Date: '+date,
           style: 'subheader'
         },
         {
-          text: 'Lieu: '+this.lieu,
+          text: 'Lieu: '+lieu,
           style: 'subheader'
         },
         {
@@ -68,7 +77,7 @@ export class ReservationComponent implements OnInit {
           style: 'subheader'
         },
         {
-          qr: this.id+'_EVENT'+'_'+this.date,
+          qr: id+'_EVENT'+'_'+date,
           fit: 150,
           alignment: 'center',
           margin: [0, 20]
@@ -93,7 +102,10 @@ export class ReservationComponent implements OnInit {
 
     pdfMake.createPdf(docDefinition).open();
   };
-  public cancelReservation(id: any) {
+  public cancelReservation(id: any, orderId) {
+    let body = {
+      orderId: orderId
+    }
     this.closeModal();
     this.loading = true;
     setTimeout(() => {
@@ -102,6 +114,9 @@ export class ReservationComponent implements OnInit {
           //console.log('supprimé');
           this.closeModal();
           this.loading = false;
+          this.eventService.getRefund(body).subscribe(re => {
+            console.log(re);
+          })
         } else {
           //console.log('erreur');
           this.loading = false;
