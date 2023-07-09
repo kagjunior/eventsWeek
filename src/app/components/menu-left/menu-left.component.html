@@ -5,7 +5,7 @@
   <a href="#" style="margin-top: 14em">Déconnexion</a>
 </div>
 <div class="main">
-  <app-event *ngIf="isEvent && !isReservation && !isHome" [eventArrayUser]="eventArrayUser"></app-event>
-  <app-reservation *ngIf="isReservation && !isEvent && !isHome" [eventInfo]="eventInfo"></app-reservation>
+  <app-event *ngIf="isEvent && !isReservation && !isHome" [eventArrayUser]="eventArrayUser" [archived]="archived"></app-event>
+  <app-reservation *ngIf="isReservation && !isEvent && !isHome" [eventInfo]="eventInfo" [archived]="archived"></app-reservation>
   <app-accueil *ngIf="!isEvent && !isReservation" [eventInfo]="eventInfo" [eventArrayUser]="eventArrayUser"></app-accueil>
 </div>

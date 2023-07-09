@@ -29,7 +29,6 @@ import {DatePipe} from "@angular/common";
 import { LOCALE_ID } from '@angular/core';
 import { registerLocaleData } from '@angular/common';
 import localeFr from '@angular/common/locales/fr';
-import { WpWidgetSimulateurTravauxComponent } from './wp-widget-simulateur-travaux/wp-widget-simulateur-travaux.component';
 import { ForgotPasswordComponent } from './pages/forgot-password/forgot-password.component';
 import { DialogComponent } from './components/dialog/dialog.component';
 import {ModalDialogModule} from "ngx-modal-dialog";
@@ -57,7 +56,6 @@ registerLocaleData(localeFr);
     SignUpComponent,
     OtpComponent,
     CheckComponent,
-    WpWidgetSimulateurTravauxComponent,
     ForgotPasswordComponent,
     DialogComponent
   ],

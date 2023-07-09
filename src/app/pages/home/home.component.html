@@ -20,5 +20,9 @@
   </div>
   <div class="listevent">
     <app-list-event *ngFor="let event of eventsArray" [event]="event"></app-list-event>
+    <div style="text-align: center;margin-top: 30px;" *ngIf="eventsArray.length === 0">
+      <p>Aucun n'évènement n'est disponible pour le moment. Profitez-en, créez-en un et invitez vos ami(e)s.</p>
+    </div>
   </div>
 </div>
+<app-footer></app-footer>

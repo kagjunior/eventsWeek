@@ -4,6 +4,7 @@ import {EventService} from "../../services/event.service";
 import {UserService} from "../../services/user.service";
 import * as pdfMake from 'pdfmake/build/pdfmake';
 import * as pdfFonts from 'pdfmake/build/vfs_fonts';
+import {AuthService} from "../../services/auth.service";
 pdfMake.vfs = pdfFonts.pdfMake.vfs;
 
 @Component({
@@ -18,8 +19,11 @@ export class EventComponent implements OnInit {
   usersReserved: any = [];
   data: any;
   loading: boolean = false;
+  @Input()
+  archived!: boolean;
   constructor(private eventService: EventService,
-              private userService: UserService) { }
+              private userService: UserService,
+              private authService: AuthService) { }
   openTab(tabId: string) {
     this.activeTab = tabId;
   }
@@ -47,15 +51,17 @@ export class EventComponent implements OnInit {
     this.closeModal();
     this.loading = true;
     setTimeout(() => {
-      this.userService.CancelReservation(id).subscribe(res => {
+      this.userService.CancelEvent(id).subscribe(res => {
         if(res['msg'] === 'ok') {
           //console.log('supprimé');
           this.closeModal();
           this.loading = false;
+          window.location.href = this.authService.urlDashboard;
         } else {
           //console.log('erreur');
           this.loading = false;
           this.closeModal();
+          alert('Désolé ! une erreur s\'est produite');
         }
       })
     }, 2000)

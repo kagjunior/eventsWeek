@@ -44,7 +44,6 @@ export class DetailEventComponent implements OnInit {
       eventId: this.eventId
     }
     this.eventService.checkIfReserved(body).subscribe(res => {
-      console.log(res)
       this.reserved = res['msg'] !== 'notReserved';
     });
 

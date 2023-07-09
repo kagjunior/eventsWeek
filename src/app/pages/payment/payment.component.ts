@@ -4,7 +4,6 @@ import {ActivatedRoute, Router} from "@angular/router";
 import {EventService} from "../../services/event.service";
 import jwt_decode from "jwt-decode";
 import {TokenService} from "../../services/token.service";
-import * as events from "events";
 import {DatePipe} from "@angular/common";
 import {User} from "../../models/user";
 
@@ -22,6 +21,7 @@ export class PaymentComponent implements OnInit {
   total!: number
   inputs: any[] = [];
   users: User[] = [];
+  zero: boolean = false;
   // @ts-ignore
   userFiliation = jwt_decode(localStorage.getItem('token')).filiation
   @ViewChild('inputContainer', { static: true }) inputContainer!: ElementRef;
@@ -38,6 +38,7 @@ export class PaymentComponent implements OnInit {
         this.eventService.getEventsById(this.id).subscribe(re => {
           this.events = re[0];
           //console.log(this.events);
+          this.zero = this.events.prix === 0;
         })
     })
   };
@@ -75,7 +76,24 @@ export class PaymentComponent implements OnInit {
       eventId: this.id,
       statut: 1,
       createdAt: this.datePipes.transform(new Date(), 'EEEE d MMMM yyyy', 'fr-FR'),
-      nombreInvite: this.nombre
+      nombreInvite: this.nombre,
+      paymentId: ''
+    };
+    if(this.events.prix === 0) {
+      body.paymentId = '0000';
+      this.loading = true;
+      //console.log(details);
+      setTimeout(() => {
+        this.eventService.reserverEvent(body).subscribe(res => {
+          if(res['msg'] === 'tik') {
+            this.loading = false;
+            this.router.navigate(['/success/payment'])
+          } else {
+            this.loading = false;
+            alert("erreur lors du paiement. Vous n'êtes débités.")
+          }
+        })
+      }, 1500);
     }
     render({
       id: '#paypal',
@@ -83,8 +101,9 @@ export class PaymentComponent implements OnInit {
       // @ts-ignore
       value: this.total,
       onApprove: details => {
+        body.paymentId = details.purchase_units[0].payments.captures[0].id;
         this.loading = true;
-        //console.log(details);
+        console.log(details);
         setTimeout(() => {
           this.eventService.reserverEvent(body).subscribe(res => {
             if(res['msg'] === 'tik') {

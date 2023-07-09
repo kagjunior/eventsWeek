@@ -16,9 +16,11 @@
       <div class="card-title">{{event.titre}}</div>
       <div class="card-price">{{event.prix}} €</div>
       <div class="card-status">{{event.total}} place(s) réservé(e)s</div>
-      <div class="card-status">sur {{event.place}} places au total</div>
       <div class="invite" (click)="getReservations(event.eventId)">Liste des réservations</div>
-      <button (click)="openModal()">Annuler l'évènement</button>
+      <button *ngIf="!archived" (click)="openModal()">Annuler l'évènement</button>
+      <button *ngIf="archived" style="background: black;color: orangered" disabled><i>Archivé</i></button>
+      <a href="{{'https://api.whatsapp.com/send?text=Salut, rejoignez-moi à cet événement passionnant :'+ event.titre + '. Plus de détails : http://localhost:4200'}}">Partager sur WhatsApp</a>
+
       <div class="modal" *ngIf="showModal">
         <div class="modal-content">
           <span class="close" (click)="closeModal()">&times;</span>
