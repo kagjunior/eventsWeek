@@ -1,0 +1,93 @@
+.sidenav {
+  height: 100%;
+  width: 200px;
+  position: fixed;
+  z-index: 1;
+  top: 65px;
+  left: 0;
+  background-color: #333;
+  padding-top: 20px;
+  text-align: center;
+}
+.mobile {
+  display: none;
+}
+
+/* Styles pour les liens dans la barre latérale */
+.sidenav a, .sidenav h3 {
+  padding: 10px;
+  text-decoration: none;
+  font-size: 18px;
+  color: #fff;
+  display: block;
+  margin: 1em;
+}
+
+/* Style pour les liens actifs dans la barre latérale */
+.sidenav h3.active {
+  background-color: #4CAF50;
+  color: white;
+}
+
+/* Styles pour la partie principale du tableau de bord */
+.main {
+  margin-left: 200px;
+  padding: 20px;
+}
+
+/* Styles pour les titres dans la partie principale */
+.main h1 {
+  font-size: 24px;
+}
+
+/* Styles pour le texte dans la partie principale */
+.main p {
+  font-size: 16px;
+  line-height: 1.5;
+}
+
+@media (max-width: 640px) {
+  .web {
+    display: none;
+  }
+  .mobile {
+    display: block;
+    /* Style du tab bar */
+      .tab {
+        //overflow: hidden;
+        margin-top: 15px;
+        background-color: #f1f1f1;
+        display: flex;
+        justify-content: space-around;
+        align-items: center;
+        .active {
+          background-color: black;
+          svg {
+            fill: green;
+          }
+        }
+      }
+
+      /* Style des boutons d'onglets */
+      .tab div {
+        background-color: inherit;
+        float: left;
+        border: none;
+        outline: none;
+        cursor: pointer;
+        padding: 14px 18px;
+        transition: 0.3s;
+        font-size: 1.2em;
+        font-weight: 700;
+        padding: 5px;
+      }
+
+      /* Changement de couleur des boutons d'onglets au survol */
+      .tab button:hover {
+        background-color: #ddd;
+      }
+
+      /* Style du contenu des onglets */
+  
+        }
+}

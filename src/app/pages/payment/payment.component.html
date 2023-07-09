@@ -1,0 +1,21 @@
+<div class="container">
+  <div class="contain">
+    <h1>{{userFiliation}},</h1>
+    <span>Vous êtes combien à vouloir réserver ?</span>
+    <input type="number" placeholder="Nombre de personnes" name="" [(ngModel)]="nombre">
+    <button (click)="handleClick()" *ngIf="!isClicked">Valider</button>
+  </div>
+  <div [class.fadeInEffect]="isClicked" *ngIf="isClicked && !zero">
+    <div class="prix">
+      Prix: <span>{{total}}€</span>
+    </div>
+    <div class="buttons">
+      <button (click)="modify()">Modifier</button>
+      <button (click)="payer()">Payer</button>
+    </div>
+  </div>
+  <div id="paypal" *ngIf="!zero"></div>
+</div>
+<button (click)="payer()" *ngIf="zero && isClicked">Je réserve</button>
+<app-spinner *ngIf="loading"></app-spinner>
+

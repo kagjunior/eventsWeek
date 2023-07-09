@@ -1,0 +1,60 @@
+<div class="container">
+  <div class="event">
+    Mes événements
+  </div>
+  <div class="main">
+    <a href="/event/create">Créer un évènement</a>
+  </div>
+</div>
+<div *ngIf="eventArrayUser.length === 0" class="contain">
+  <h2>Vous n'avez aucun évènement en cours.</h2>
+</div>
+<div class="contain">
+  <div class="card" *ngFor="let event of eventArrayUser">
+    <img class="card-image" src="./assets/roller-coaster-g8eca68687_1280.jpg" alt="Image de la carte">
+    <div class="card-details">
+      <div class="card-title">{{event.titre}}</div>
+      <div class="card-price">{{event.prix}} €</div>
+      <div class="card-status">{{event.total}} place(s) réservé(e)s</div>
+      <div class="invite" (click)="getReservations(event.eventId)">Liste des réservations</div>
+      <button *ngIf="!archived" (click)="openModal()">Annuler l'évènement</button>
+      <button *ngIf="archived" style="background: black;color: orangered" disabled><i>Archivé</i></button>
+      <a href="{{'https://api.whatsapp.com/send?text=Salut, rejoignez-moi à cet événement passionnant :'+ event.titre + '. Plus de détails : http://localhost:4200'}}">Partager sur WhatsApp</a>
+
+      <div class="modal" *ngIf="showModal">
+        <div class="modal-content">
+          <span class="close" (click)="closeModal()">&times;</span>
+          <b>Attention!</b>
+          <p>Cette annulation sans motif entrainera une restriction sur votre compte.</p>
+          <p>Envoyez-nous votre motif par mail : contact@diasporaevents.com</p>
+          <p>Voulez-vous vraiment annuler votre évènement ?</p>
+          <div class="modal-buttons">
+            <button style="padding: 0.5em 1em;background: green " (click)="cancelEvent(event.eventId)">Oui, j'annule</button>&nbsp;
+            <button style="padding: 0.5em 1em;" (click)="closeModal()">Non</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <app-spinner *ngIf="loading"></app-spinner>
+  <div class="id">
+    <!--<div class="tab-container">
+    <div class="tab-menu">
+      <button class="tab-button" (click)="openTab('tab1')" [ngClass]="{ 'active': activeTab === 'tab1' }">Onglet 1</button>
+      <button class="tab-button" (click)="openTab('tab2')" [ngClass]="{ 'active': activeTab === 'tab2' }">Onglet 2</button>
+      <button class="tab-button" (click)="openTab('tab3')" [ngClass]="{ 'active': activeTab === 'tab3' }">Onglet 3</button>
+    </div>
+    <div class="tab-content">
+      <div id="tab1" class="tab-item" [ngClass]="{ 'active': activeTab === 'tab1' }">
+        Contenu de l'onglet 1
+      </div>
+      <div id="tab2" class="tab-item" [ngClass]="{ 'active': activeTab === 'tab2' }">
+        Contenu de l'onglet 2
+      </div>
+      <div id="tab3" class="tab-item" [ngClass]="{ 'active': activeTab === 'tab3' }">
+        Contenu de l'onglet 3
+      </div>
+    </div>
+  </div> !-->
+  </div>
+</div>

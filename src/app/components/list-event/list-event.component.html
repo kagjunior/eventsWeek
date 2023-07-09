@@ -1,0 +1,11 @@
+<div class="card">
+  <img src="./assets/roller-coaster-g8eca68687_1280.jpg" alt="Image de l'événement">
+  <div class="card-content">
+    <div class="h1"><a href="/event/{{event.eventId}}">{{event.titre}}</a></div>
+    <p style="color: blue">{{date}}, de {{timeStart}} à {{timeEnd}}</p>
+    <p>{{event.lieu}}, {{event.codePostal}}, {{event.ville}}</p>
+    <p style="color: orangered" *ngIf="restant > 0">{{restant}} place(s) restante(s)</p>
+    <p style="color: green" *ngIf="restant === 0">Complet</p>
+    <p class="price">{{event.prix}}€</p>
+  </div>
+</div>

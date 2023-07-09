@@ -1,0 +1,26 @@
+.code {
+  width: 370px;
+  margin: 0 auto;
+  padding: 1em;
+  text-align: center;
+  .head {
+    background: #d200ff;
+  }
+  input {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box
+  }
+}
+.button {
+  margin-top: 10px;
+  background-color: black;
+  color: #fff;
+  font-weight: bolder;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}

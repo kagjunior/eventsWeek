@@ -1,0 +1,28 @@
+<div class="container">
+  <div class="card">
+    <div class="slogan">
+      <div class="titre">
+        <span style="color: brown">Envie de</span> sortir ce week-end,<br>
+        c'est par ici
+      </div>
+    </div>
+    <div class="image">
+      <img src="./assets/roller-coaster-g8eca68687_1280.jpg" alt="">
+    </div>
+  </div>
+  <div class="filter">
+    <div class="titre">
+      Découvrez vos évènements les plus passionnants de votre localité
+    </div>
+    <!--<div class="input">
+      <input type="text" name="" id="" placeholder="Saisir votre ville" value="{{currentCity}}">
+    </div>
+  </div>!-->
+  <div class="listevent">
+    <app-list-event *ngFor="let event of eventsArray" [event]="event"></app-list-event>
+    <div style="text-align: center;margin-top: 30px;" *ngIf="eventsArray.length === 0">
+      <p>Aucun n'évènement n'est disponible pour le moment. Profitez-en, créez-en un et invitez vos ami(e)s.</p>
+    </div>
+  </div>
+</div>
+<app-footer></app-footer>

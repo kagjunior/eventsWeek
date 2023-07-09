@@ -1,0 +1,62 @@
+/* Styles pour le formulaire de création d'événement */
+.container {
+  width: 80%;
+  margin: 0 auto;
+  form {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    .first, .second {
+      width: 35%;
+    }
+  }
+}
+
+h2 {
+  text-align: center;
+}
+
+form label {
+  display: block;
+  margin-top: 10px;
+}
+
+form input,
+form textarea {
+  width: 100%;
+  padding: 10px;
+  margin-top: 5px;
+  border: 1px solid #ccc;
+  border-radius: 10px;
+}
+
+form button {
+  display: block;
+  width: 100%;
+  padding: 10px;
+  margin-top: 10px;
+  background-color: #4CAF50;
+  color: #fff;
+  border: none;
+  cursor: pointer;
+}
+
+form button:hover {
+  background-color: #45a049;
+}
+@media (max-width: 640px) {
+  .container {
+    width: 100%;
+    margin: 0 auto;
+    form {
+      display: block;
+      .first, .second {
+        display: block;
+        width: 90%;
+        input {
+          padding: 10px 0;
+        }
+      }
+    }
+  }
+}

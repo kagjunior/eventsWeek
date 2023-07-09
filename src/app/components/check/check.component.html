@@ -1,0 +1,12 @@
+<div class="code">
+  <div class="head">
+    <h1>Validation du compte</h1>
+  </div>
+  <div class="body">
+    <p>Saisir votre email:</p>
+    <input type="email" placeholder="Saisir l'email" [(ngModel)]="email">
+    <input type="number" placeholder="Saisir le code reçu par mail" [(ngModel)]="code">
+  </div>
+  <button class="button" (click)="validateCheck()">Valider</button>
+</div>
+<app-spinner *ngIf="loading"></app-spinner>

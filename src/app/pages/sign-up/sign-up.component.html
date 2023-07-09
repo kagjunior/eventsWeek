@@ -1,0 +1,50 @@
+<div class="container" *ngIf="!missingCode">
+  <div class="fil">
+    Créer un compte
+  </div>
+  <form>
+    <div class="form-group">
+      <label for="filiation">Prénom et nom:</label>
+      <input type="text" id="filiation" name="filiation" [(ngModel)]="user.filiation">
+    </div>
+    <div class="form-group">
+      <label for="email">Email :</label>
+      <input type="email" id="email" name="email" [(ngModel)]="user.email">
+    </div>
+    <div class="form-group">
+      <label for="adresse">Adresse :</label>
+      <input type="text" id="adresse" name="adresse" [(ngModel)]="user.adresse">
+    </div>
+    <div class="form-group">
+      <label for="codePostal">Code postal :</label>
+      <input type="text" id="codePostal" name="codePostal" [(ngModel)]="user.codePostal">
+    </div>
+    <div class="form-group">
+      <label for="ville">Ville :</label>
+      <input type="text" id="ville" name="ville" [(ngModel)]="user.ville">
+    </div>
+    <div class="form-group">
+      <label for="telephone">Téléphone :</label>
+      <input type="tel" id="telephone" name="telephone" [(ngModel)]="user.telephone">
+    </div>
+    <div class="form-group">
+      <label for="motDePasse">Mot de passe :</label>
+      <input type="password" id="motDePasse" name="motDePasse" [(ngModel)]="user.password">
+    </div>
+    <button class="button" (click)="SignUp()">S'inscrire</button>
+    <button (click)="checkCode()">J'ai déjà reçu un code de validation</button>
+  </form>
+</div>
+<div class="code" *ngIf="missingCode">
+  <div class="head">
+    <h1>Validation du compte</h1>
+  </div>
+  <div class="body">
+    <p>Un code vient de vous être envoyé par mail.</p>
+    <input type="number" placeholder="Saisir le code reçu par mail" [(ngModel)]="verifyCode">
+  </div>
+  <button class="button" (click)="validateSignUp()">Valider</button>
+</div>
+<app-spinner *ngIf="loading"></app-spinner>
+<app-footer></app-footer>
+

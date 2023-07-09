@@ -1,0 +1,108 @@
+.container {
+  width: 80%;
+  margin: 40px auto;
+  .card {
+    display: flex;
+    justify-content: space-around;
+    .slogan {
+      display: flex;
+      justify-content: center;
+      padding-left: 10px;
+      align-items: center;
+      background: linear-gradient(to left, white 75%, lightgrey 50%);
+      .titre {
+          font-weight: 900;
+          font-size: 2rem;
+      }
+    }
+    .image {
+      width: 50%;
+      img {
+        width: 100%;
+      }
+    }
+  }
+  .filter {
+    margin: 25px 0 40px 0;
+    text-align: center;
+    //display: flex;
+    //gap: 10px;
+    //justify-content: center;
+    //align-items: center;
+    .titre {
+      font-size: 1.5em;
+      font-weight: 900;
+    }
+    .input {
+      input {
+        border: none;
+        border-bottom: 3px solid green;
+        font-size: 3em;
+        color: green;
+      }
+      input:focus {
+        outline: thin dotted;
+      }
+    }
+  }
+  .listevent {
+    margin-top: 35px;
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    gap: 25px;
+  }
+}
+@media (max-width: 640px) {
+  .container {
+    width: 100%;
+    //margin: 40px auto;
+    .card {
+      .slogan {
+        margin-left: 5px;
+        padding-left: 10px;
+        background: linear-gradient(to left, white 75%, lightgrey 50%);
+        .titre {
+            font-weight: 900;
+            font-size: 1.5em;
+        }
+      }
+      .image {
+        display: none;
+      }
+    }
+    .filter {
+      margin: 25px 0 40px 0;
+      text-align: center;
+      //display: flex;
+      //gap: 10px;
+      //justify-content: center;
+      //align-items: center;
+      .titre {
+        font-size: 1.5em;
+        font-weight: 900;
+        display: none;
+      }
+      .input {
+        input {
+          border: none;
+          border-bottom: 3px solid green;
+          font-size: 3em;
+          color: green;
+        }
+        input:focus {
+          outline: thin dotted;
+        }
+      }
+    }
+    .listevent {
+      margin-top: 35px;
+      display: flex;
+      align-items: center;
+      flex-wrap: wrap;
+      justify-content: space-around;
+      gap: 25px;
+    }
+  }
+}

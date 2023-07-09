@@ -1,0 +1,30 @@
+<div class="container"> 
+  <div class="event">
+    Mes réservations
+  </div>
+  <div *ngIf="eventInfo.length === 0" class="contain">
+    <h2>Vous n'avez aucune réservation en cours.</h2>
+  </div>
+    <div class="contain">
+      <div class="card" *ngFor="let event of eventInfo">
+        <img class="card-image" src="./assets/roller-coaster-g8eca68687_1280.jpg" alt="Image de la carte">
+        <div class="card-details">
+          <div class="card-title"><a href="http://localhost:4200/event/{{event?.eventId}}">{{event?.titre}}</a></div>
+          <div class="card-billet" (click)="download(event?.eventId)">Télécharger mon billet</div>
+          <button *ngIf="!archived" (click)="openModal()">Annuler ma réservation</button>
+          <button *ngIf="archived" style="background: black;color: orangered" disabled><i>Archivé</i></button>
+          <div class="modal" *ngIf="showModal">
+            <div class="modal-content">
+              <span class="close" (click)="closeModal()">&times;</span>
+              <p>Voulez-vous vraiment annuler votre réservation ?</p>
+              <div class="modal-buttons">
+                <button style="padding: 0.5em 1em;background: green " (click)="cancelReservation(event.userReservationId, event.paymentId)">Oui, j'annule</button>&nbsp;
+                <button style="padding: 0.5em 1em;" (click)="closeModal()">Non</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <app-spinner *ngIf="loading"></app-spinner>
+    </div>
+</div>

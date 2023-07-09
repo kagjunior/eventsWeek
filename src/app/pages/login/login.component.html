@@ -1,0 +1,36 @@
+<div class="container">
+  <b style="color: red" *ngIf="error">Tous les champs sont obligatoires</b>
+  <b style="color: red" *ngIf="islog">Cet utilisateur n'existe pas</b>
+  <div class="signin">
+    Je me connecte
+  </div>
+  <form>
+    <div class="form-group">
+      <label for="email">Email :</label>
+      <input type="email" id="email" name="email" [(ngModel)]="user.email">
+    </div>
+    <div class="form-group">
+      <label for="password">Mot de passe :</label>
+      <input type="password" id="password" name="motDePasse" [(ngModel)]="user.password">
+    </div>
+    <div class="button">
+      <button (click)="login()">Se connecter</button>
+    </div>
+  </form>
+  <div style="text-align: center;margin-top: 1em">
+    <div style="color: red;text-decoration: underline;cursor: pointer;font-weight: bolder" (click)="forgetPassword()">J'ai oublié mot de passe</div>
+  </div>
+  <!--<div class="email">
+    <label for="email">Email:</label>&nbsp;
+    <input type="text" name="" id="email" [(ngModel)]="user.email">
+  </div>
+  <div class="password">
+    <label for="password">Password:</label>&nbsp;
+    <input type="password" name="" id="password" [(ngModel)]="user.password">
+  </div>
+  <div class="button">
+    <button (click)="login()">Se connecter</button>
+  </div> !-->
+</div>
+<app-spinner *ngIf="loading"></app-spinner>
+<app-footer></app-footer>
