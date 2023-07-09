@@ -9,6 +9,9 @@
   padding-top: 20px;
   text-align: center;
 }
+.mobile {
+  display: none;
+}
 
 /* Styles pour les liens dans la barre latérale */
 .sidenav a, .sidenav h3 {
@@ -41,4 +44,50 @@
 .main p {
   font-size: 16px;
   line-height: 1.5;
+}
+
+@media (max-width: 640px) {
+  .web {
+    display: none;
+  }
+  .mobile {
+    display: block;
+    /* Style du tab bar */
+      .tab {
+        //overflow: hidden;
+        margin-top: 15px;
+        background-color: #f1f1f1;
+        display: flex;
+        justify-content: space-around;
+        align-items: center;
+        .active {
+          background-color: black;
+          svg {
+            fill: green;
+          }
+        }
+      }
+
+      /* Style des boutons d'onglets */
+      .tab div {
+        background-color: inherit;
+        float: left;
+        border: none;
+        outline: none;
+        cursor: pointer;
+        padding: 14px 18px;
+        transition: 0.3s;
+        font-size: 1.2em;
+        font-weight: 700;
+        padding: 5px;
+      }
+
+      /* Changement de couleur des boutons d'onglets au survol */
+      .tab button:hover {
+        background-color: #ddd;
+      }
+
+      /* Style du contenu des onglets */
+  
+        }
 }

@@ -112,5 +112,24 @@
 button:hover {
   opacity: 0.8;
 }
+@media (max-width: 640px) {
+  .container {
+    text-align: center;
+    margin-top: 10px;
+    .event {
+      font-size: 2em;
+      font-weight: 700;
+    }
+    .card {
+      padding: 10px 0;
+      div {
+        display: block;
+      }
+      img {
+        display: none;
+      }
+    }
+  }
+}
 
 

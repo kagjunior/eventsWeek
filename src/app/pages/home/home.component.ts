@@ -3,6 +3,8 @@ import {EventService} from "../../services/event.service";
 import {Events} from "../../models/event";
 // @ts-ignore
 import {} from '@types/googlemaps';
+import { UserService } from 'src/app/services/user.service';
+import { filter } from 'rxjs';
 
 @Component({
   selector: 'app-home',
@@ -11,14 +13,15 @@ import {} from '@types/googlemaps';
 })
 export class HomeComponent implements OnInit {
   eventsArray: Events[] = [];
-
-  constructor(private eventService: EventService) { }
+  currentCity: any
+  constructor(private eventService: EventService,
+              private userService: UserService) { }
 
   ngOnInit(): void {
     this.getEvents();
-    //this.getCityFromGeolocation();
+
   }
-  getCityFromGeolocation(): void {
+ /* getCityFromGeolocation(): void {
     if (navigator.geolocation) {
       navigator.geolocation.getCurrentPosition(
         (position) => {
@@ -59,12 +62,13 @@ export class HomeComponent implements OnInit {
       }
     }
     return '';
-  }
+  } */
 
   public getEvents() {
-    this.eventService.getEvents().subscribe(res => {
+    this.eventService.getEvents()  
+    .subscribe(res => {
       this.eventsArray = res;
     })
-  }
+  };
 
 }
