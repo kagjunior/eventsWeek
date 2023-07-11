@@ -5,6 +5,7 @@ import * as pdfFonts from 'pdfmake/build/vfs_fonts';
 import jwt_decode from "jwt-decode";
 import {UserService} from "../../services/user.service";
 import {EventService} from "../../services/event.service";
+import { AuthService } from 'src/app/services/auth.service';
 
 pdfMake.vfs = pdfFonts.pdfMake.vfs;
 
@@ -24,10 +25,12 @@ export class ReservationComponent implements OnInit {
   archived!: boolean;
   constructor(private datePipes: DatePipe,
               private userService: UserService,
-              private eventService: EventService) { }
+              private eventService: EventService,
+              private authService: AuthService) { }
 
   ngOnInit(): void {
   }
+  archivedReservation(body) {}
   showModal: boolean = false;
 
   openModal() {
@@ -105,24 +108,26 @@ export class ReservationComponent implements OnInit {
   public cancelReservation(id: any, orderId) {
     let body = {
       orderId: orderId
-    }
+    };
+    //console.log(body);
     this.closeModal();
     this.loading = true;
     setTimeout(() => {
-      this.userService.CancelReservation(id).subscribe(res => {
-        if(res['msg'] === 'nik') {
-          //console.log('supprimé');
-          this.closeModal();
           this.loading = false;
-          this.eventService.getRefund(body).subscribe(re => {
-            console.log(re);
+          //console.log('remboursement effectué');
+          //console.log('refund');      
+          this.userService.CancelReservation(id).subscribe(res => {
+            if(res['msg'] === 'nik' || res['msg'] === 'ok') {
+              //console.log('supprimé');
+              this.closeModal();
+              this.loading = false;
+              window.location.href = this.authService.urlDashboard;
+            } else {
+              //console.log('erreur');
+              this.loading = false;
+              this.closeModal();
+            }
           })
-        } else {
-          //console.log('erreur');
-          this.loading = false;
-          this.closeModal();
-        }
-      })
     }, 2000)
 
   }

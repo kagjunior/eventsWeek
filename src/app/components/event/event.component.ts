@@ -35,6 +35,12 @@ export class EventComponent implements OnInit {
     this.showModal = true;
   }
 
+  archivedEvent(id) {
+    this.eventService.archived(id).subscribe(res => {
+      console.log(res);
+    })
+  }
+
   closeModal() {
     this.showModal = false;
   }

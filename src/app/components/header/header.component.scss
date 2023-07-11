@@ -82,7 +82,11 @@
 @media (max-width: 640px) {
   .header {
     border-bottom: 1px solid lightgray;
-    padding-bottom: 10px;
+   // padding-bottom: 10px;
+   position: fixed;
+   background-color: white;
+   padding: 1em 0;
+   top: 0;
     .logo { display: block;
       display: block;
       width: 100%;

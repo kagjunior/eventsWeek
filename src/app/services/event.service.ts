@@ -40,4 +40,7 @@ export class EventService {
   public getRefund(orderId): Observable<any> {
     return this.http.post(this.url+'/refund', orderId);
   }
+  public archived(body): Observable<any>{
+    return this.http.post(this.url+'/archive-event', body);
+  }
 }

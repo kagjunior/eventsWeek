@@ -2,7 +2,8 @@
   <div class="contain">
     <h1>{{userFiliation}},</h1>
     <span>Vous êtes combien à vouloir réserver ?</span>
-    <input type="number" placeholder="Nombre de personnes" name="" [(ngModel)]="nombre">
+    <input type="number" placeholder="Nombre de personnes" name="" [(ngModel)]="nombre" [ngStyle]="{'border': error ? '1px solid red' : 'black'}">
+    <p style="color: red;font-size: 10px;" *ngIf="error">Choisir le nombre de personnes</p>
     <button (click)="handleClick()" *ngIf="!isClicked">Valider</button>
   </div>
   <div [class.fadeInEffect]="isClicked" *ngIf="isClicked && !zero">
@@ -16,6 +17,6 @@
   </div>
   <div id="paypal" *ngIf="!zero"></div>
 </div>
-<button (click)="payer()" *ngIf="zero && isClicked">Je réserve</button>
+<button style="margin: 10px auto;padding: 10px 1em;background-color: black;color: white;border-radius: 15px;border: none;" (click)="payer()" *ngIf="zero && isClicked">Je réserve</button>
 <app-spinner *ngIf="loading"></app-spinner>
 

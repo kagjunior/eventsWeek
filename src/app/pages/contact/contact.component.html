@@ -1,0 +1,33 @@
+<!--
+Question : 
+https://openclassrooms.com/forum/sujet/formulaire-de-contact-responsive
+-->
+<div class="container">
+    <h1>Formulaire de contact</h1>
+    <form>
+      <label for="fname">Nom & prénom</label>
+      <input type="text" id="fname" name="firstname" placeholder="Votre nom et prénom" [(ngModel)]="contact.filiation">
+  
+      <label for="sujet">Sujet</label>
+      <input type="text" id="sujet" name="sujet" placeholder="L'objet de votre message" [(ngModel)]="contact.objet">
+  
+      <label for="emailAddress">Email</label>
+      <input id="emailAddress" type="email" name="email" placeholder="Votre email" [(ngModel)]="contact.email">
+  
+  
+      <label for="subject">Message</label>
+      <textarea id="subject" name="subject" placeholder="Votre message" style="height:200px" [(ngModel)]="contact.message"></textarea>
+  
+      <button type="button" (click)="sendMessage()">Envoyer</button>
+    </form>
+  </div>
+  <div class="modal" *ngIf="modal">
+    <div class="modal-content">
+      <span class="close" (click)="closeModal()">&times;</span>
+      <p>Votre message a été bien envoyé. Nous ferons le necessaire pour revenir vers vous.</p>
+      <p>Merci.</p>
+    </div>
+  </div>
+  <app-spinner *ngIf="loading"></app-spinner>
+  <app-footer></app-footer>
+  

@@ -21,3 +21,28 @@
     }
   }
 }
+@media (max-width: 640px) {
+  .container {
+    width: 95%;
+    margin: 5em auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    height: 400px;
+    border: 1px solid green;
+    padding: 1em 0;
+    border-radius: 15px;
+    .contain {
+      span {
+        font-size: 1.5em;
+        color: green;
+        font-weight: bolder;
+      }
+      div {
+        margin-top: 3em;
+        font-weight: bolder;
+      }
+    }
+  }
+}
