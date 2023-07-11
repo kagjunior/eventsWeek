@@ -32,6 +32,7 @@ import localeFr from '@angular/common/locales/fr';
 import { ForgotPasswordComponent } from './pages/forgot-password/forgot-password.component';
 import { DialogComponent } from './components/dialog/dialog.component';
 import {ModalDialogModule} from "ngx-modal-dialog";
+import { ContactComponent } from './pages/contact/contact.component';
 
 registerLocaleData(localeFr);
 
@@ -57,7 +58,8 @@ registerLocaleData(localeFr);
     OtpComponent,
     CheckComponent,
     ForgotPasswordComponent,
-    DialogComponent
+    DialogComponent,
+    ContactComponent
   ],
   imports: [
     BrowserModule,

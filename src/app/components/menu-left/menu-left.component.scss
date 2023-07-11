@@ -49,9 +49,11 @@
 @media (max-width: 640px) {
   .web {
     display: none;
+  
   }
   .mobile {
     display: block;
+    margin: 85px 0 15px 0;
     /* Style du tab bar */
       .tab {
         //overflow: hidden;

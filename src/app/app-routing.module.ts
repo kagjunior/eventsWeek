@@ -11,6 +11,7 @@ import {SignUpComponent} from "./pages/sign-up/sign-up.component";
 import {AuthGuard} from "./_helpers/auth.guard";
 import {CheckComponent} from "./components/check/check.component";
 import {ForgotPasswordComponent} from "./pages/forgot-password/forgot-password.component";
+import { ContactComponent } from './pages/contact/contact.component';
 
 const routes: Routes = [
   {
@@ -49,6 +50,9 @@ const routes: Routes = [
   },
   {
     path: 'init-password', component: ForgotPasswordComponent
+  },
+  {
+    path: 'contact', component: ContactComponent
   }
 ];
 

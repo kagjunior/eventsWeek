@@ -22,6 +22,7 @@ export class PaymentComponent implements OnInit {
   inputs: any[] = [];
   users: User[] = [];
   zero: boolean = false;
+  error:boolean = false;
   // @ts-ignore
   userFiliation = jwt_decode(localStorage.getItem('token')).filiation
   @ViewChild('inputContainer', { static: true }) inputContainer!: ElementRef;
@@ -56,9 +57,14 @@ export class PaymentComponent implements OnInit {
     return jwt_decode(token).id;
   }
   handleClick() {
-    this.isClicked = true;
-    this.total = this.nombre * this.events.prix;
-    this.generateInputs();
+    if(this.nombre === undefined) {
+      this.error = true;
+    } else {
+      this.error = false;
+      this.isClicked = true;
+      this.total = this.nombre * this.events.prix;
+      this.generateInputs();
+    }
   }
   modify() {
     this.isClicked = false;
@@ -99,7 +105,7 @@ export class PaymentComponent implements OnInit {
       id: '#paypal',
       currency: 'EUR',
       // @ts-ignore
-      value: this.total,
+      value: (this.total + this.total * 0.25),
       onApprove: details => {
         body.paymentId = details.purchase_units[0].payments.captures[0].id;
         this.loading = true;

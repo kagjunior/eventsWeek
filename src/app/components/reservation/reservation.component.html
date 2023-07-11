@@ -2,7 +2,7 @@
   <div class="event">
     Mes réservations
   </div>
-  <div *ngIf="eventInfo.length === 0" class="contain">
+  <div *ngIf="eventInfo.length == 0" class="contain">
     <h2>Vous n'avez aucune réservation en cours.</h2>
   </div>
     <div class="contain">
@@ -12,7 +12,7 @@
           <div class="card-title"><a href="http://localhost:4200/event/{{event?.eventId}}">{{event?.titre}}</a></div>
           <div class="card-billet" (click)="download(event?.eventId)">Télécharger mon billet</div>
           <button *ngIf="!archived" (click)="openModal()">Annuler ma réservation</button>
-          <button *ngIf="archived" style="background: black;color: orangered" disabled><i>Archivé</i></button>
+          <button *ngIf="archived" style="border-radius:15px ;background-color: transparent;border: 1px solid orangered;padding: 8px 11px;color: orangered" (click)="archivedReservation(event)"><i>Archivé</i></button>
           <div class="modal" *ngIf="showModal">
             <div class="modal-content">
               <span class="close" (click)="closeModal()">&times;</span>

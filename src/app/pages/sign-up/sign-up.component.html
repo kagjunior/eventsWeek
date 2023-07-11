@@ -31,8 +31,8 @@
       <label for="motDePasse">Mot de passe :</label>
       <input type="password" id="motDePasse" name="motDePasse" [(ngModel)]="user.password">
     </div>
-    <button class="button" (click)="SignUp()">S'inscrire</button>
-    <button (click)="checkCode()">J'ai déjà reçu un code de validation</button>
+    <button class="button" (click)="SignUp()">S'inscrire</button>&nbsp;
+    <button (click)="checkCode()" style="padding: 8px 10px;background-color: orangered;color: white;border: none;border-radius: 15px;">J'ai déjà reçu un code de validation</button>
   </form>
 </div>
 <div class="code" *ngIf="missingCode">
