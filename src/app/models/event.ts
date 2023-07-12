@@ -16,5 +16,6 @@ export class Events {
   prix!: number
   place!: number
   statut!: number
+  archived?: boolean;
 
 }
