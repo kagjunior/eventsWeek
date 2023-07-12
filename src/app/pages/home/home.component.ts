@@ -14,6 +14,7 @@ import { filter } from 'rxjs';
 export class HomeComponent implements OnInit {
   eventsArray: Events[] = [];
   currentCity: any
+  archived!: boolean
   constructor(private eventService: EventService,
               private userService: UserService) { }
 
@@ -65,9 +66,18 @@ export class HomeComponent implements OnInit {
   } */
 
   public getEvents() {
-    this.eventService.getEvents()  
+    this.eventService.getEvents()
     .subscribe(res => {
       this.eventsArray = res;
+      this.eventsArray.forEach(event => {
+        let day1 = new Date(event.dateEnd);
+        let day2 = new Date();
+        if(day1 >= day2) {
+          event.archived = false;
+        } else {
+          event.archived = true;
+        }
+      })
     })
   };
 

@@ -29,14 +29,24 @@ export class DetailEventComponent implements OnInit {
    this.activatedRoute.paramMap.subscribe(param => {
       this.eventId = param.get('id');
       this.eventService.getEventsById(this.eventId).subscribe(res => {
-          this.eventTab = res[0];
-        this.eventService.getTotalReservation(this.eventTab.eventId).subscribe(res => {
-          //console.log(this.event.place);
-          // console.log(res)
-          this.restant = this.eventTab.place - eval(res[0].total);
+          this.eventTab = res;
+        this.eventService.getTotalReservation(this.eventTab[0].eventId).subscribe(re => {
+          console.log(re)
+          this.eventTab.forEach(ev => {
+            this.restant = ev.place - eval(re[0].total);
+            let day1 = new Date(ev.dateEnd);
+            let day2 = new Date();
+            if(day1 >= day2) {
+              ev.archived = false;
+            } else {
+              ev.archived = true;
+            }
+          });
+          console.log(this.eventTab);
+
         })
-          this.descriptionHtml = this.sanitizer.bypassSecurityTrustHtml(this.eventTab.description);
-          this.date = this.datePipes.transform(this.eventTab.dateStart, 'EEEE d MMMM yyyy', 'fr-FR');
+          this.descriptionHtml = this.sanitizer.bypassSecurityTrustHtml(this.eventTab[0].description);
+          this.date = this.datePipes.transform(this.eventTab[0].dateStart, 'EEEE d MMMM yyyy', 'fr-FR');
       })
     });
     let body = {
