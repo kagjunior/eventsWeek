@@ -67,7 +67,7 @@ export class DetailEventComponent implements OnInit {
   public buyTicket() {
     this.loading = true;
     setTimeout(() => {
-      this.router.navigate(['/payment/'+this.eventTab.eventId]);
+      this.router.navigate(['/payment/'+this.eventTab[0].eventId]);
       this.loading = false;
     }, 2000)
   }
