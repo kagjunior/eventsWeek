@@ -4,8 +4,9 @@
     <div class="h1"><a href="/event/{{event.eventId}}">{{event.titre}}</a></div>
     <p style="color: blue">{{date}}, de {{timeStart}} à {{timeEnd}}</p>
     <p>{{event.lieu}}, {{event.codePostal}}, {{event.ville}}</p>
-    <p style="color: orangered" *ngIf="restant > 0">{{restant}} place(s) restante(s)</p>
-    <p style="color: green" *ngIf="restant === 0">Complet</p>
+    <p style="color: orangered" *ngIf="restant > 0 && !event.archived">{{restant}} place(s) restante(s)</p>
+    <p style="color: green" *ngIf="restant === 0 && !event.archived">Complet</p>
+    <h3 style="color: red" *ngIf="event.archived"><i>Archivé</i></h3>
     <p class="price" *ngIf="event.prix > 0">{{event.prix}}€</p>
     <p class="price" *ngIf="event.prix === 0">Libre</p>
   </div>

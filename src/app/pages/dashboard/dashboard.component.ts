@@ -27,32 +27,29 @@ export class DashboardComponent implements OnInit {
         let day1 = new Date(ev.dateEnd);
         let day2 = new Date();
         if(day1 >= day2) {
-          this.archived = false;
+          ev.archived = false;
         } else {
-          this.archived = true;
+          ev.archived = true;
         }
       })
     })
-  }
+  };
   public getEventByUser(id) {
     this.eventService.getEventByUserId(id).subscribe(res => {
       res.forEach(event => {
+        let day1 = new Date(event.dateEnd);
+        let day2 = new Date();
         this.eventService.getTotalReservation(event.eventId).subscribe(res => {
           res.forEach(count => {
             event.total = count.total;
+            if(day1 >= day2) {
+              event.archived = false;
+            } else {
+              event.archived = true;
+            }
           })
-
         });
         this.eventArrayUser.push(event);
-        event.forEach(ev => {
-          let day1 = new Date(ev.dateEnd);
-          let day2 = new Date();
-          if(day1 >= day2) {
-            this.archived = false;
-          } else {
-            this.archived = true;
-          }
-        })
       })
     })
   }

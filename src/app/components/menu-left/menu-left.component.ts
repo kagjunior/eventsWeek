@@ -22,7 +22,7 @@ export class MenuLeftComponent implements OnInit {
     this.isEvent = false;
     this.isHome = true;
     this.isReservation = false;
-    this.choose(1);
+    this.choose(0);
     this.currentId = 1;
   }
 
