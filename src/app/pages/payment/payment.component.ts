@@ -109,7 +109,6 @@ export class PaymentComponent implements OnInit {
       onApprove: details => {
         body.paymentId = details.purchase_units[0].payments.captures[0].id;
         this.loading = true;
-        console.log(details);
         setTimeout(() => {
           this.eventService.reserverEvent(body).subscribe(res => {
             if(res['msg'] === 'tik') {
