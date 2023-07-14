@@ -3,7 +3,6 @@
   <h3 (click)="choose(0)" [ngClass]="{ 'active': !isEvent && !isReservation }">Accueil</h3>
   <h3 (click)="choose(1)" [ngClass]="{ 'active': isEvent }">Événements</h3>
   <h3 (click)="choose(2)" [ngClass]="{ 'active': isReservation }">Réservations</h3>
-  <a href="#" style="margin-top: 14em">Déconnexion</a>
 </div>
 <div class="main">
   <app-event *ngIf="isEvent && !isReservation && !isHome" [eventArrayUser]="eventArrayUser" [archived]="archived"></app-event>
@@ -48,11 +47,11 @@
   <div class="tabcontent" *ngIf="currentId == 0">
     <app-accueil [eventInfo]="eventInfo" [eventArrayUser]="eventArrayUser"></app-accueil>
   </div>
-  
+
   <div class="tabcontent" *ngIf="currentId === 1">
     <app-event [eventArrayUser]="eventArrayUser" [archived]="archived"></app-event>
   </div>
-  
+
   <div class="tabcontent" *ngIf="currentId === 2">
     <app-reservation [eventInfo]="eventInfo" [archived]="archived"></app-reservation>
   </div>

@@ -1,16 +1,16 @@
-<div  *ngFor="let event of eventArrayUser">
+<div>
   <div class="container">
     <div class="event">
       Mes événements
     </div>
-    <div class="main" *ngIf="event.archived">
+    <div class="main" *ngIf="eventArrayUser[0]?.archived || eventArrayUser.length === 0">
       <a href="/event/create">Créer un évènement</a>
     </div>
   </div>
   <div *ngIf="eventArrayUser.length === 0" class="contain">
     <h2>Vous n'avez aucun évènement en cours.</h2>
   </div>
-  <div class="contain">
+  <div class="contain" *ngFor="let event of eventArrayUser">
     <div class="card">
       <img class="card-image" src="./assets/roller-coaster-g8eca68687_1280.jpg" alt="Image de la carte">
       <div class="card-details">
