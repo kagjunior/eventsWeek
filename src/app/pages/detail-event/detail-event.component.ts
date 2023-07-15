@@ -31,7 +31,6 @@ export class DetailEventComponent implements OnInit {
       this.eventService.getEventsById(this.eventId).subscribe(res => {
           this.eventTab = res;
         this.eventService.getTotalReservation(this.eventTab[0].eventId).subscribe(re => {
-          console.log(re)
           this.eventTab.forEach(ev => {
             this.restant = ev.place - eval(re[0].total);
             let day1 = new Date(ev.dateEnd);
@@ -42,7 +41,6 @@ export class DetailEventComponent implements OnInit {
               ev.archived = true;
             }
           });
-          console.log(this.eventTab);
 
         })
           this.descriptionHtml = this.sanitizer.bypassSecurityTrustHtml(this.eventTab[0].description);
@@ -67,7 +65,7 @@ export class DetailEventComponent implements OnInit {
   public buyTicket() {
     this.loading = true;
     setTimeout(() => {
-      this.router.navigate(['/payment/'+this.eventTab.eventId]);
+      this.router.navigate(['/payment/'+this.eventTab[0].eventId]);
       this.loading = false;
     }, 2000)
   }

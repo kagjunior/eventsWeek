@@ -9,7 +9,7 @@ import {Token} from "../models/token";
 })
 export class AuthService {
   //logged = new BehaviorSubject<boolean>(false);
-  url = 'http://localhost:8890/api';
+  url = 'https://diasporaevents-03872cd5beb2.herokuapp.com/api';
   urlDirect = 'http://localhost:4200';
   urlDashboard = 'http://localhost:4200/dashboard'
   constructor(private http: HttpClient) { }

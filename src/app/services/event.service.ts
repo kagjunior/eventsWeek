@@ -7,7 +7,7 @@ import {Events} from "../models/event";
   providedIn: 'root'
 })
 export class EventService {
-  url = 'http://localhost:8890/api';
+  url = 'https://diasporaevents-03872cd5beb2.herokuapp.com/api';
   constructor(private http: HttpClient) { }
 
   public addEvent(events: Events): Observable<Events> {

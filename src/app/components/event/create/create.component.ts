@@ -28,10 +28,7 @@ export class CreateComponent implements OnInit {
       this.loading = true;
       setTimeout(() => {
         this.eventService.addEvent(this.events).subscribe(res => {
-          if (res['msg']==='notallowed') {
-            alert("Vous avez déjà créé un évènement qui est en cours. Nous vous prions de le préparer au maximum pour sa réussite avant de créer un autre.")
-            this.loading = false;
-          }
+          console.log(res);
           this.router.navigate(['/dashboard']);
           this.loading = false;
         })

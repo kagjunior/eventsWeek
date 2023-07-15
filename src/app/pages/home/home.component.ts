@@ -20,8 +20,10 @@ export class HomeComponent implements OnInit {
 
   ngOnInit(): void {
     this.getEvents();
-
   }
+
+ 
+
  /* getCityFromGeolocation(): void {
     if (navigator.geolocation) {
       navigator.geolocation.getCurrentPosition(

@@ -30,8 +30,6 @@ export class ListEventComponent implements OnInit {
     // @ts-ignore
     this.timeEnd = this.event.hourEnd.slice(0, 2) + 'h';
     this.eventService.getTotalReservation(this.event.eventId).subscribe(res => {
-      //console.log(this.event.place);
-     // console.log(res)
       this.restant = this.event.place - eval(res[0].total);
     })
   }
