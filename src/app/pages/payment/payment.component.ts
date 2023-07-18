@@ -100,27 +100,20 @@ export class PaymentComponent implements OnInit {
           }
         })
       }, 1500);
+    } else {
+      body.paymentId = '1111';
+      this.loading = true;
+      setTimeout(() => {
+        this.eventService.reserverEvent(body).subscribe(res => {
+          if(res['msg'] === 'tik') {
+            this.loading = false;
+            this.router.navigate(['/success/payment'])
+          } else {
+            this.loading = false;
+            alert("erreur lors du paiement. Vous n'êtes débités.")
+          }
+        })
+      }, 1500);
     }
-    render({
-      id: '#paypal',
-      currency: 'EUR',
-      // @ts-ignore
-      value: (this.total + this.total * 0.25),
-      onApprove: details => {
-        body.paymentId = details.purchase_units[0].payments.captures[0].id;
-        this.loading = true;
-        setTimeout(() => {
-          this.eventService.reserverEvent(body).subscribe(res => {
-            if(res['msg'] === 'tik') {
-              this.loading = false;
-              this.router.navigate(['/success/payment'])
-            } else {
-              this.loading = false;
-              alert("erreur lors du paiement. Vous n'êtes débités.")
-            }
-          })
-        }, 1500);
-      }
-    })
   }
 }

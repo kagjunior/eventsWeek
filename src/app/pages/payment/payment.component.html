@@ -12,10 +12,9 @@
     </div>
     <div class="buttons">
       <button (click)="modify()">Modifier</button>
-      <button (click)="payer()">Payer</button>
+      <button (click)="payer()">Je réserve</button>
     </div>
   </div>
-  <div id="paypal" *ngIf="!zero"></div>
 </div>
 <button style="margin: 10px auto;padding: 10px 1em;background-color: black;color: white;border-radius: 15px;border: none;" (click)="payer()" *ngIf="zero && isClicked">Je réserve</button>
 <app-spinner *ngIf="loading"></app-spinner>
